@@ -2,8 +2,12 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
-  password: String
+  username: {type: String, unique: true},
+  password: String,
+  googleId: String,
+  role: [{type: String, enum: ['admin', 'client']}],
+  googleAccessToken: String,
+  googleProfile: {}
 }, {
   timestamps: true
 });
